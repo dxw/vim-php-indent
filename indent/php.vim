@@ -55,6 +55,7 @@ function PhpIndent()
         \ || currentLine =~ '^)'
         \ || currentLine =~ '^]'
         \ || currentLine =~ '^end\(if\|while\|for\|foreach\|switch\);$'
+        \ || currentLine =~ '^<\/\w\+>$'
     return previousIndent - &shiftwidth
   endif
 
@@ -63,6 +64,14 @@ function PhpIndent()
         \ || previousLine =~ '[$'
         \ || previousLine =~ '^\(if\|while\|for\|foreach\|switch\).*:$'
     return previousIndent + &shiftwidth
+  endif
+
+  let openTagMatch = matchlist(previousLine, '^<\(\w\+\)\(\s.*\)\?>$')
+  if len(openTagMatch) > 0
+    echo openTagMatch
+    if index([ 'base', 'link', 'meta', 'hr', 'br', 'wbr', 'img', 'embed', 'param', 'source', 'track', 'area', 'col', 'input', 'keygen', 'menuitem' ], openTagMatch[1]) ==# -1
+      return previousIndent + &shiftwidth
+    endif
   endif
 
   return previousIndent
