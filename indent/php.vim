@@ -44,12 +44,11 @@ function PhpIndent()
 
   let previousIndent = indent(previousNum)
 
+  let left  = 0
+  let right = 0
+
 
   "" Decisions
-
-  if currentNum ==# 1
-    return 0
-  end
 
   if         currentLine =~ '^}'
         \ || currentLine =~ '^)'
@@ -57,7 +56,7 @@ function PhpIndent()
         \ || currentLine =~ '^end\(if\|while\|for\|foreach\|switch\);$'
         \ || currentLine =~ '^<?php\s\+end\(if\|while\|for\|foreach\|switch\);\?\s*?>$'
         \ || currentLine =~ '^<\/\w\+>$'
-    return previousIndent - &shiftwidth
+    let left = 1
   endif
 
   if         previousLine =~ '{$'
@@ -65,16 +64,24 @@ function PhpIndent()
         \ || previousLine =~ '[$'
         \ || previousLine =~ '^\(if\|while\|for\|foreach\|switch\).*:$'
         \ || previousLine =~ '^<?php\s\+\(if\|while\|for\|foreach\|switch\).*:\s*?>$'
-    return previousIndent + &shiftwidth
+    let right = 1
   endif
 
   let openTagMatch = matchlist(previousLine, '^<\(\w\+\)\(\s.*\)\?>$')
   if len(openTagMatch) > 0
     echo openTagMatch
     if index([ 'base', 'link', 'meta', 'hr', 'br', 'wbr', 'img', 'embed', 'param', 'source', 'track', 'area', 'col', 'input', 'keygen', 'menuitem' ], openTagMatch[1]) ==# -1
-      return previousIndent + &shiftwidth
+      let right = 1
     endif
   endif
 
-  return previousIndent
+  if currentNum ==# 1
+    return 0
+  elseif left && !right
+    return previousIndent - &shiftwidth
+  elseif right && !left
+    return previousIndent + &shiftwidth
+  else
+    return previousIndent
+  endif
 endfunction
