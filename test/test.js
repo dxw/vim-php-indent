@@ -9,7 +9,7 @@ var fs = require('fs')
   , fs2 = require('fs-extra')
 
 function cmd(path) {
-    var c = 'vim -Z -n --noplugin -i NONE -u NONE -Ec \'set smarttab shiftwidth=2|source indent/php.vim|exe "norm gg=G"|x\''
+    var c = 'vim -Z -n --noplugin -i NONE -u NONE -Ec \'set expandtab shiftwidth=2|source indent/php.vim|exe "norm gg=G"|x\''
     return c + ' ' + path
 }
 
