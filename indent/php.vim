@@ -38,6 +38,7 @@ function PhpIndent()
   let currentNum = v:lnum
   let previousNum = prevnonblank(currentNum - 1)
 
+  " Strip whitespace
   let currentLine  = substitute(getline(currentNum),  '^\s*\(.\{-}\)\s*$', '\1', '')
   let previousLine = substitute(getline(previousNum), '^\s*\(.\{-}\)\s*$', '\1', '')
 
@@ -53,15 +54,14 @@ function PhpIndent()
   if         currentLine =~ '^}'
         \ || currentLine =~ '^)'
         \ || currentLine =~ '^]'
-        \ || currentLine =~ '^(<\?php\s*)?end(if|while|for|foreach|switch)(\s*\?>)?$'
-        \ || currentLine =~ '^<\/\w+>$'
+        \ || currentLine =~ '^end\(if\|while\|for\|foreach\|switch\);$'
     return previousIndent - &shiftwidth
   endif
 
   if         previousLine =~ '{$'
         \ || previousLine =~ '($'
         \ || previousLine =~ '[$'
-        \ || previousLine =~ '^(<\?php\s*)?(if|while|for|foreach|switch).*:(\s*\?>)?$'
+        \ || previousLine =~ '^\(if\|while\|for\|foreach\|switch\).*:$'
     return previousIndent + &shiftwidth
   endif
 
