@@ -69,7 +69,6 @@ function PhpIndent()
 
   let openTagMatch = matchlist(previousLine, '^<\(\w\+\)\(\s.*\)\?>$')
   if len(openTagMatch) > 0
-    echo openTagMatch
     if index([ 'base', 'link', 'meta', 'hr', 'br', 'wbr', 'img', 'embed', 'param', 'source', 'track', 'area', 'col', 'input', 'keygen', 'menuitem' ], openTagMatch[1]) ==# -1
       let right = 1
     endif
