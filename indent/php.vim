@@ -1,9 +1,8 @@
 " Vim indent file
 " Language:		PHP
 " Maintainer:		Tom Adams <tom@dxw.com>
-" URL:			https://github.com/dxw/php-indent
-" Version:              0.1
-" Last Change:          2013-05-22
+" URL:			https://github.com/dxw/vim-php-indent
+" Version:              1
 
 "" Initialization
 
@@ -70,7 +69,13 @@ function PhpIndent()
   let openTagMatch = matchlist(previousLine, '^<\(\w\+\)\(\s.*\)\?>$')
   if len(openTagMatch) > 0
     if index([ 'base', 'link', 'meta', 'hr', 'br', 'wbr', 'img', 'embed', 'param', 'source', 'track', 'area', 'col', 'input', 'keygen', 'menuitem' ], openTagMatch[1]) ==# -1
+      " line begins with an opening tag
       let right = 1
+      if previousLine =~ '<\/\w\+>$'
+        " line ends with a closing tag
+        " i.e. catch <div></div>
+        let right = 0
+      endif
     endif
   endif
 
