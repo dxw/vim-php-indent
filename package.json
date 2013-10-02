@@ -1,4 +1,8 @@
 {
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dxw/vim-php-indent.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "glob": "~3.2.1",
@@ -7,9 +11,10 @@
     "grunt-contrib-jshint": "~0.4.3",
     "async": "~0.2.8",
     "tmp": "0.0.18",
-    "fs-extra": "~0.6.1"
+    "fs-extra": "~0.6.1",
+    "grunt-cli": "~0.1.9"
   },
   "scripts": {
-      "test": "grunt test"
+    "test": "node_modules/.bin/grunt test"
   }
 }
