@@ -9,6 +9,12 @@ Use [unbundle.vim](https://github.com/sunaku/vim-unbundle) or [pathogen.vim](htt
     cd ~/.vim/bundle
     git clone https://github.com/dxw/vim-php-indent.git
 
+## Testing
+
+Requires [vroom](https://github.com/google/vroom):
+
+    vroom test/*.vroom
+
 ## Licence
 
 MIT - see COPYING.md
