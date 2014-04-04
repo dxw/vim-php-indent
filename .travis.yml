@@ -1,5 +1,5 @@
 before_install:
-  # Use vim-gtk because vim-nox doesn't have +clientserver
+  # Install vim-gtk because vim-nox doesn't have +clientserver
   - "sudo apt-get install -qq vim-gtk"
   # Clone and install vroom
   - "git clone https://github.com/google/vroom.git"
