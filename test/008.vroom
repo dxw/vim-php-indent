@@ -1,0 +1,12 @@
+  > :set expandtab shiftwidth=2 ft=php<CR>
+  > :source indent/php.vim<CR>
+
+  % <div><CR>
+  %   <div class="clearfix"></div><CR>
+  % </div><CR>
+
+  > gg=G
+
+  <div>
+    <div class="clearfix"></div>
+  </div>

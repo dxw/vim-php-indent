@@ -1,0 +1,18 @@
+  > :set expandtab shiftwidth=2 ft=php<CR>
+  > :source indent/php.vim<CR>
+
+  % <?php<CR>
+  % <CR>
+  % if (true) {<CR>
+  % array(<CR>
+  % );<CR>
+  % }<CR>
+
+  > gg=G
+
+  <?php
+  &
+  if (true) {
+    array(
+    );
+  }
