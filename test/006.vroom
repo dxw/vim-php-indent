@@ -1,0 +1,12 @@
+  > :set expandtab shiftwidth=2 ft=php<CR>
+  > :source indent/php.vim<CR>
+
+  % <?php while (true) : ?><CR>
+  %   <?php echo 123 ?><CR>
+  % <?php endwhile ?><CR>
+
+  > gg=G
+
+  <?php while (true) : ?>
+    <?php echo 123 ?>
+  <?php endwhile ?>

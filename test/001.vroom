@@ -1,0 +1,20 @@
+  > :set expandtab shiftwidth=2 ft=php<CR>
+  > :source indent/php.vim<CR>
+
+  %       <?php<CR>
+  % <CR>
+  % if (<CR>
+  % 'cat'<CR>
+  %   ) {<CR>
+  %     fn();<CR>
+  % }<CR>
+
+  > gg=G
+
+  <?php
+  &
+  if (
+    'cat'
+  ) {
+    fn();
+  }

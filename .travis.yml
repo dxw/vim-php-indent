@@ -1,5 +1,10 @@
-language: node_js
-node_js:
-  - "0.10"
 before_install:
-  - "sudo apt-get install -qq vim-nox"
+  # Use vim-gtk because vim-nox doesn't have +clientserver
+  - "sudo apt-get install -qq vim-gtk"
+  # Clone and install vroom
+  - "git clone https://github.com/google/vroom.git"
+  - "cd vroom"
+  - "python setup.py build && sudo python setup.py install"
+  - "cd -"
+script:
+  - "vroom test/*.vroom"

@@ -1,0 +1,70 @@
+  > :set expandtab shiftwidth=2 ft=php<CR>
+  > :source indent/php.vim<CR>
+
+  % <?php /* Template name: Case Study */ ?><CR>
+  % <?php the_post() ?><CR>
+  % <div class="container"><CR>
+  %   <div class="row"><CR>
+  %     <article class="span12 case-study-container"><CR>
+  %       <div class="case-study-colour"><CR>
+  %         <header class="row"><CR>
+  %           <div class="title span3"><CR>
+  %             <h2>Case study</h2><CR>
+  %           </div><CR>
+  %           <div class="span8 title"><CR>
+  %             <h1><?php the_title(); ?></h1><CR>
+  %           </div><CR>
+  %         </header><CR>
+  %         <?php foreach (get_field('content_sections') as $con_secs) : ?><CR>
+  %           <article class="row"><CR>
+  %             <div class="item span12"><CR>
+  %               <div class="row"><CR>
+  %                 <div class="span3 title"><CR>
+  %                   <?php echo $con_secs['title'] ?><CR>
+  %                 </div><CR>
+  %                 <div class="span9"><CR>
+  %                   <?php echo $con_secs['content'] ?><CR>
+  %                 </div><CR>
+  %               </div><CR>
+  %             </div><CR>
+  %           </article><CR>
+  %         <?php endforeach ?><CR>
+  %       </article><CR>
+  %     </div><CR>
+  %   </div><CR>
+  % </div><CR>
+
+  > gg=G
+
+  <?php /* Template name: Case Study */ ?>
+  <?php the_post() ?>
+  <div class="container">
+    <div class="row">
+      <article class="span12 case-study-container">
+        <div class="case-study-colour">
+          <header class="row">
+            <div class="title span3">
+              <h2>Case study</h2>
+            </div>
+            <div class="span8 title">
+              <h1><?php the_title(); ?></h1>
+            </div>
+          </header>
+          <?php foreach (get_field('content_sections') as $con_secs) : ?>
+            <article class="row">
+              <div class="item span12">
+                <div class="row">
+                  <div class="span3 title">
+                    <?php echo $con_secs['title'] ?>
+                  </div>
+                  <div class="span9">
+                    <?php echo $con_secs['content'] ?>
+                  </div>
+                </div>
+              </div>
+            </article>
+          <?php endforeach ?>
+        </article>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,56 @@
+  > :set expandtab shiftwidth=2 ft=php<CR>
+  > :source indent/php.vim<CR>
+
+  % <?php<CR>
+  % <CR>
+  % $m = new Mustache_Engine;<CR>
+  % <CR>
+  % $s = $m->render(<CR>
+  %   '<CR>
+  %   <ul><CR>
+  %     {{^animals}}<CR>
+  %     <li>Sorry, no animals :(</li><CR>
+  %     {{/animals}}<CR>
+  %     {{#animals}}<CR>
+  %     <li><CR>
+  %       {{.}}<CR>
+  %     </li><CR>
+  %     {{/animals}}<CR>
+  %   </ul><CR>
+  %   ',<CR>
+  %   array(<CR>
+  %     'animals' => array(<CR>
+  %       'dog',<CR>
+  %       'turtle',<CR>
+  %       'cat',<CR>
+  %     ),<CR>
+  %   )<CR>
+  % );<CR>
+
+  > gg=G
+
+  <?php
+  &
+  $m = new Mustache_Engine;
+  &
+  $s = $m->render(
+    '
+    <ul>
+      {{^animals}}
+        <li>Sorry, no animals :(</li>
+      {{/animals}}
+      {{#animals}}
+        <li>
+          {{.}}
+        </li>
+      {{/animals}}
+    </ul>
+    ',
+    array(
+      'animals' => array(
+        'dog',
+        'turtle',
+        'cat',
+      ),
+    )
+  );
