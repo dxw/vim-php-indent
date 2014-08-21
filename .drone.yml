@@ -1,0 +1,27 @@
+image: ubuntu
+script:
+  - apt-get update
+
+  # Install a fake X11 - vroom uses --servername which requires X11
+  - apt-get install -y xvfb
+  # Install screen so vroom thinks it's in a regular terminal
+  - apt-get install -y screen
+  - chmod 777 /var/run/screen
+
+  # Install vim-gtk because vim-nox doesn't have +clientserver
+  - apt-get install -y vim-gtk
+  - apt-get install -y git
+  - apt-get install -y python
+
+  # Clone and install vroom
+  - git clone https://github.com/google/vroom.git
+  - sh -c 'cd vroom && python setup.py build && sudo python setup.py install'
+
+  # Run the tests
+  - screen -L -d -m xvfb-run vroom test/*.vroom
+  # Wait for the command to finish
+  - while test `ls /var/run/screen/S-root | wc -l` != 0; do true; done
+  # Output the last few lines of the log file for debugging
+  - tail -n20 screenlog.0 | sed -r "s:\x1B\[[0-9;]*[mK]::g"
+  # Check for success
+  - tail -n1 screenlog.0 | sed -r "s:\x1B\[[0-9;]*[mK]::g" | grep ' Everything is OK.'
