@@ -1,0 +1,20 @@
+  > :set expandtab shiftwidth=2 ft=php<CR>
+  > :source indent/php.vim<CR>
+
+  % <?php if (true) : ?><CR>
+  % cat<CR>
+  % <?php else if (false) : ?><CR>
+  % elephant<CR>
+  % <?php else : ?><CR>
+  % dog<CR>
+  % <?php endif ?><CR>
+
+  > gg=G
+
+  <?php if (true) : ?>
+    cat
+  <?php else if (false) : ?>
+    elephant
+  <?php else : ?>
+    dog
+  <?php endif ?>
