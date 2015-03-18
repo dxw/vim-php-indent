@@ -54,6 +54,8 @@ function PhpIndent()
         \ || currentLine =~ '^]'
         \ || currentLine =~ '^end\(if\|while\|for\|foreach\|switch\);$'
         \ || currentLine =~ '^<?php\s\+end\(if\|while\|for\|foreach\|switch\);\?\s*?>$'
+        \ || currentLine =~ '^<?php\s\+else\s*:\s*?>$'
+        \ || currentLine =~ '^<?php\s\+elseif\W.*:\?\s*?>$'
         \ || currentLine =~ '^<\/\w\+>$'
         \ || currentLine =~ '^{{\/.\+}}$'
     let left = 1
@@ -62,8 +64,8 @@ function PhpIndent()
   if         previousLine =~ '{$'
         \ || previousLine =~ '($'
         \ || previousLine =~ '[$'
-        \ || previousLine =~ '^\(if\|while\|for\|foreach\|switch\).*:$'
-        \ || previousLine =~ '^<?php\s\+\(if\|while\|for\|foreach\|switch\).*:\s*?>$'
+        \ || previousLine =~ '^\(if\|while\|for\|foreach\|switch\)\W.*:$'
+        \ || previousLine =~ '^<?php\s\+\(if\|while\|for\|foreach\|switch\|else\|elseif\)\W.*:\s*?>$'
         \ || previousLine =~ '^{{[#^].\+}}$'
     let right = 1
   endif
