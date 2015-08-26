@@ -1,0 +1,20 @@
+  > :set expandtab shiftwidth=2 ft=php<CR>
+  > :source indent/php.vim<CR>
+
+  % <?php<CR>
+  % /*<CR>
+  % * Text<CR>
+  % More text<CR>
+  % */<CR>
+  % function meow() {<CR>
+  % }<CR>
+
+  > gg=G
+
+  <?php
+  /*
+   * Text
+   More text
+   */
+  function meow() {
+  }
