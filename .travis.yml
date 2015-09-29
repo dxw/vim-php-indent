@@ -1,0 +1,15 @@
+language: generic
+before_script:
+  # Install vroom dependencies
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq python3
+  # Install your desired version of vroom.
+  - wget https://github.com/google/vroom/releases/download/v0.12.0/vroom_0.12.0-1_all.deb
+  - sudo dpkg -i vroom_0.12.0-1_all.deb
+  # Install vim.
+  - sudo apt-get install vim-gnome
+  # Vroom's vim mode currently requires a running X server.
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+script:
+  - vroom --crawl ./test/
